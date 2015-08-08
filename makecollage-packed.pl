@@ -11,6 +11,8 @@ Creates a collage of images, handling irregular sets (square, panorama).
 Packs images reasonably well but will require some tests
 for the right number of rows.
 
+Uses the magnficence that is ImageMagick.
+
 Used successfully for 100 to 120 photos combined into one poster.
 
 Good form: number photos to be packed with %03d (foo001.jpg, foo002.jpg).
