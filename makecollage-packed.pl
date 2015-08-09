@@ -1,4 +1,7 @@
 #!/usr/bin/perl
+# peter sheridan dodds
+# https://github.com/petersheridandodds
+# MIT License
 
 use List::Util qw(sum);
 

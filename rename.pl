@@ -1,4 +1,7 @@
 #!/usr/bin/perl
+# peter sheridan dodds
+# https://github.com/petersheridandodds
+# MIT License
 
 $usage = "rename text1 text2 file [files...]
 

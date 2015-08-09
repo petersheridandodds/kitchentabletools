@@ -1,4 +1,7 @@
 #!/usr/bin/perl
+# peter sheridan dodds
+# https://github.com/petersheridandodds
+# MIT License
 
 $usage = "pdftile m n widthfrac hspacepts vspacepts f fontsize maintitle title1 fig1.pdf [title2 fig2.pdf ...] outfile
 

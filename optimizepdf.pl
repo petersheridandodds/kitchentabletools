@@ -1,4 +1,7 @@
 #!/usr/bin/perl
+# peter sheridan dodds
+# https://github.com/petersheridandodds
+# MIT License
 
 # usage: optimizepdf foo1.pdf [foo2.pdf ... ]
 # creates foo1-optimized.pdf ...
