@@ -51,8 +51,9 @@ $fontsize = $ARGV[6];
 print "-------\n";
 
 $title = $ARGV[7];
+$resize = $ARGV[8];
 $titlekludge = "";
-for ($i = 8; $i < $#ARGV; $i += 2) {
+for ($i = 9; $i < $#ARGV; $i += 2) {
     $titlekludge = $titlekludge."$ARGV[$i]";
 }
 
@@ -64,13 +65,16 @@ print "making a little latex file...\n";
 
 open (TEXFILE,">$texfile.tex") or die "can't open $texfile.tex: $!";
 print TEXFILE "\\documentclass[$fontsize pt]{extarticle}
-\\usepackage{graphics,rotating,color,array}
+%% \\documentclass[final]{beamer}
+\\usepackage{graphics,rotating,color,array,amsmath}
+\\usepackage[paperwidth=20in,paperheight=40in]{geometry}
 \\pagestyle{empty}
 
 \\setlength{\\tabcolsep}{$hspacepts"."pt}
 \\setlength{\\extrarowheight}{$vspacepts"."pt}
 
 \\begin{document}
+
 %% \\sffamily
 \\noindent
 ";
@@ -81,14 +85,14 @@ print TEXFILE"\\begin{center}
 \\end{center}
 ";
 
-print TEXFILE "\\begin{tabular}{";
+print TEXFILE "{\\$resize \\begin{tabular}{";
 foreach $j (1..$n) {
     print TEXFILE "$f";
 }
 print TEXFILE "}\n";
 
-$k1=8;
-$k2=9;
+$k1=9;
+$k2=10;
 foreach $i (1..$m) {
     if ($titlekludge ne "") {
 	foreach $j (1..$n) {
@@ -103,17 +107,16 @@ foreach $i (1..$m) {
     }
     foreach $j (1..$n) {
 	if ($j < $n) {
-	    print TEXFILE "\\includegraphics[width=$widthfrac\\textwidth]{$ARGV[$k2]}&";
+	    print TEXFILE "\\input{$ARGV[$k2]}&";
 	}
 	else {
-	    print TEXFILE "\\includegraphics[width=$widthfrac\\textwidth]{$ARGV[$k2]}\\\\\n";
+	    print TEXFILE "\\input{$ARGV[$k2]}\\\\\n";
 	}
 	$k2+=2;
     }
 }
 
-
-print TEXFILE "\\end{tabular}
+print TEXFILE "\\end{tabular} }
 \\end{document}
 ";
 
