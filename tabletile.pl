@@ -57,11 +57,13 @@ for ($i = 9; $i < $#ARGV; $i += 2) {
     $titlekludge = $titlekludge."$ARGV[$i]";
 }
 
+print "$titlekludge\n";
+
 $texfile = "tmp_tmp_pdftile";
 
 $outfile = $ARGV[$#ARGV];
 
-print "making a little latex file...\n";
+print "making a little latex file...$texfile.tex \n";
 
 open (TEXFILE,">$texfile.tex") or die "can't open $texfile.tex: $!";
 print TEXFILE "\\documentclass[$fontsize pt]{extarticle}
@@ -80,7 +82,7 @@ print TEXFILE "\\documentclass[$fontsize pt]{extarticle}
 ";
 
 
-print TEXFILE"\\begin{center}
+print TEXFILE "\\begin{center}
 \\textbf{$title}
 \\end{center}
 ";
@@ -97,7 +99,7 @@ foreach $i (1..$m) {
     if ($titlekludge ne "") {
 	foreach $j (1..$n) {
 	    if ($j < $n) {
-		print TEXFILE "$ARGV[$k1]&";
+		print TEXFILE "$ARGV[$k1] & ";
 	    }
 	    else {
 		print TEXFILE "$ARGV[$k1]\\\\\n";
@@ -107,10 +109,10 @@ foreach $i (1..$m) {
     }
     foreach $j (1..$n) {
 	if ($j < $n) {
-	    print TEXFILE "\\input{$ARGV[$k2]}&";
+	    print TEXFILE "\\centering \\input{$ARGV[$k2]} & ";
 	}
 	else {
-	    print TEXFILE "\\input{$ARGV[$k2]}\\\\\n";
+	    print TEXFILE "\\centering \\input{$ARGV[$k2]}\\\\\n";
 	}
 	$k2+=2;
     }
@@ -131,6 +133,6 @@ print "\n";
 `cp $texfile-crop.pdf $outfile.pdf`;
 
 print "cleaning up ... \n";
-`\\rm $texfile.*`;
+# `\\rm $texfile.*`;
 
 

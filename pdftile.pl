@@ -64,6 +64,8 @@ print "making a little latex file...\n";
 
 open (TEXFILE,">$texfile.tex") or die "can't open $texfile.tex: $!";
 print TEXFILE "\\documentclass[$fontsize pt]{extarticle}
+%% \\documentclass[final]{beamer}
+%% \\usepackage[size=custom,width=38,height=40,scale=1,debug]{beamerposter}
 \\usepackage{graphics,rotating,color,array}
 \\pagestyle{empty}
 
@@ -79,6 +81,8 @@ print TEXFILE "\\documentclass[$fontsize pt]{extarticle}
 print TEXFILE"\\begin{center}
 \\textbf{$title}
 \\end{center}
+%% {\\footnotesize
+{\\Large
 ";
 
 print TEXFILE "\\begin{tabular}{";
@@ -114,6 +118,7 @@ foreach $i (1..$m) {
 
 
 print TEXFILE "\\end{tabular}
+%% } %% close the custom size
 \\end{document}
 ";
 
