@@ -26,7 +26,7 @@ outfile.pdf will be created (involves cropping).
 Example (put this kind of structure into a simple shell script):
 
 pdftile 2 2 0.48 3 0 l 8 \
-\"\" \
+\"Overall title\" \
 \"A. Title for panel A:\" \
 panel-A.pdf \
 \"B. Title for panel B:\" \
@@ -75,7 +75,7 @@ print TEXFILE "\\documentclass[$fontsize pt]{extarticle}
 \\setlength{\\extrarowheight}{$vspacepts"."pt}
 
 \\begin{document}
-%% \\sffamily
+\\sffamily
 \\noindent
 ";
 
@@ -132,7 +132,8 @@ print "cropping pdf...\n";
 print "\n";
 `mv $outfile-crop.pdf $outfile.pdf`;
 
-print "cleaning up ... \n";
+print "cleaning up ... \n\n";
 `\\rm $texfile.*`;
 
+print "output written to:\n$outfile.pdf\n";
 
