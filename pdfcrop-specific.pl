@@ -7,9 +7,9 @@ foreach $file (@ARGV) {
 	print "Processing $file ...\n";
 
 	       $command = "gs                               \\
- -o cropped-$basefilename.pdf                 \\
+ -o $basefilename-crop.pdf                 \\
  -sDEVICE=pdfwrite              \\
- -c \"[/CropBox [0 0 800 440]\"   \\
+ -c \"[/CropBox [0 0 290 350]\"   \\
  -c \" /PAGES pdfmark\"           \\
  -f $basefilename.pdf";
 
