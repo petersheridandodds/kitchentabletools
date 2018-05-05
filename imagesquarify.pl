@@ -49,3 +49,4 @@ foreach $imagefile (@imagefiles) {
     system("convert  -scale 200x200 $squareimagefile $x200imagefile");
 }
 
+
