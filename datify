@@ -1,11 +1,18 @@
 #!/usr/bin/perl
+# peter sheridan dodds
+# https://github.com/petersheridandodds
+# MIT License
 
 $usage = "usage: datify [YYYY-MM-DD] file1 [file2 file3 ...]
 
-prefixes file foo using today's date as YYYY-MM-DDfoo
+    prefixes file foo using today's date as YYYY-MM-DDfoo
 
-if no date is give, today's date is used.
-";
+    if no date is give, today's date is used.
+
+    for preference, changes spaces into underscores
+
+    time is the big sorting index
+    ";
 
 if ($ARGV[0] =~ m/^(\d\d\d\d)-(\d\d)-(\d\d)$/) {
     $year = $1;
@@ -25,15 +32,29 @@ else {
     }
 }
 
-foreach $file (@ARGV) {
-    $newfile = "$year-$month-$day$file";
-    # replace spaces with underscores
-    $newfile =~ s/ +/_/g;
-    # remove parentheses
-    $newfile =~ s/\(//g;
-    $newfile =~ s/\)//g;
+$date = $year-$month-$day;
 
-    $file =~ s/ /\\ /g;
+foreach $file (@ARGV) {
+
+    if ($file =~ m/^(.*)\/(.*)?$/) {
+	$dir = $1;
+	$filename = $2;
+    }
+    else {
+	$dir = ".";
+	$filename = $file;
+    }
+
+    $filename =~ s/ +/_/g;
+    print $filename;
+    
+    $newfile = $dir."/".$date.$filename;
+
     `mv -i "$file" "$newfile"`;
-    print "moved $file to $newfile\n";
+
+    if ($?==0) {
+	print "moved $file to $newfile\n";
+    } else {
+	print "error: $file not moved\n";
+    }
 }
