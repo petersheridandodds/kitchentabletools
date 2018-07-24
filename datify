@@ -32,7 +32,7 @@ else {
     }
 }
 
-$date = $year-$month-$day;
+$date = $year."-".$month."-".$day;
 
 foreach $file (@ARGV) {
 
