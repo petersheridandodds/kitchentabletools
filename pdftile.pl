@@ -25,16 +25,16 @@ outfile.pdf will be created (involves cropping).
 
 Example (put this kind of structure into a simple shell script):
 
-pdftile 2 2 0.48 3 0 l 8 \
-\"Overall title\" \
-\"A. Title for panel A:\" \
-panel-A.pdf \
-\"B. Title for panel B:\" \
-panel-B.pdf \
-\"C. Title for panel C:\" \
-panel-C.pdf \
-\"D. Title for panel D:\" \
-panel-D.pdf \
+pdftile 2 2 0.48 3 0 l 8 \\
+\"Overall title\" \\
+\"A. Title for panel A:\" \\
+panel-A.pdf \\
+\"B. Title for panel B:\" \\
+panel-B.pdf \\
+\"C. Title for panel C:\" \\
+panel-C.pdf \\
+\"D. Title for panel D:\" \\
+panel-D.pdf \\
 combined_figure_name
 
 ";
@@ -75,7 +75,7 @@ print TEXFILE "\\documentclass[$fontsize pt]{extarticle}
 \\setlength{\\extrarowheight}{$vspacepts"."pt}
 
 \\begin{document}
-\\sffamily
+%% \\sffamily
 \\noindent
 ";
 
