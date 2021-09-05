@@ -1,4 +1,8 @@
 #!/usr/bin/perl
+# peter sheridan dodds
+# https://github.com/petersheridandodds
+# MIT License
+
 foreach $pdffigure (@ARGV) {
     ($tifffigure = $pdffigure) =~ s/pdf$/tiff/;
     ##    maximum width = 7.5 * 600  = 4500

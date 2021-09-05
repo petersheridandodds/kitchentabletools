@@ -1,0 +1,60 @@
+#!/usr/bin/perl
+# peter sheridan dodds
+# https://github.com/petersheridandodds
+# MIT License
+
+$usage = "usage: datify [YYYY-MM-DD] file1 [file2 file3 ...]
+
+    prefixes file foo using today's date as YYYY-MM-DDfoo
+
+    if no date is give, today's date is used.
+
+    for preference, changes spaces into underscores
+
+    time is the big sorting index
+    ";
+
+if ($ARGV[0] =~ m/^(\d\d\d\d)-(\d\d)-(\d\d)$/) {
+    $year = $1;
+    $month = $2;
+    $day = $3;
+    shift @ARGV;
+} 
+else {
+    ($day,$month,$year) = (localtime)[3,4,5];
+    $year = $year + 1900;
+    $month = $month+1;
+    if ($month < 10) {
+	$month = "0$month";
+    }
+    if ($day < 10) {
+	$day = "0$day";
+    }
+}
+
+$date = $year."-".$month."-".$day;
+
+foreach $file (@ARGV) {
+
+    if ($file =~ m/^(.*)\/(.*)?$/) {
+	$dir = $1;
+	$filename = $2;
+    }
+    else {
+	$dir = ".";
+	$filename = $file;
+    }
+
+    $filename =~ s/ +/_/g;
+    print $filename;
+    
+    $newfile = $dir."/".$date.$filename;
+
+    `mv -i "$file" "$newfile"`;
+
+    if ($?==0) {
+	print "moved $file to $newfile\n";
+    } else {
+	print "error: $file not moved\n";
+    }
+}

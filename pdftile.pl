@@ -1,4 +1,8 @@
 #!/usr/bin/perl
+# peter sheridan dodds
+# https://github.com/petersheridandodds
+# MIT License
+
 $usage = "pdftile m n widthfrac hspacepts vspacepts f fontsize maintitle title1 fig1.pdf [title2 fig2.pdf ...] outfile
 
 creates an m rows by n columns tiling of postscript figures
@@ -12,25 +16,25 @@ uses tabular with format f which can be l, c, or r.
 
 fontsize for labels: 8, 9, 10, ...
 
-hspacepts = adjustment to horizontal separation between figures    
+hspacepts = adjustment to horizontal separation between figures
 vspacepts = adjustment to vertical separation between figures
-    
+
 no checks that input is okay---horrible things could happen
 
 outfile.pdf will be created (involves cropping).
 
 Example (put this kind of structure into a simple shell script):
 
-pdftile 2 2 0.48 3 0 l 8 \
-\"\" \
-\"A. Title for panel A:\" \
-panel-A.pdf \
-\"B. Title for panel B:\" \
-panel-B.pdf \
-\"C. Title for panel C:\" \
-panel-C.pdf \
-\"D. Title for panel D:\" \
-panel-D.pdf \
+pdftile 2 2 0.48 3 0 l 8 \\
+\"Overall title\" \\
+\"A. Title for panel A:\" \\
+panel-A.pdf \\
+\"B. Title for panel B:\" \\
+panel-B.pdf \\
+\"C. Title for panel C:\" \\
+panel-C.pdf \\
+\"D. Title for panel D:\" \\
+panel-D.pdf \\
 combined_figure_name
 
 ";
@@ -132,7 +136,8 @@ print "cropping pdf...\n";
 print "\n";
 `cp $texfile-crop.pdf $outfile.pdf`;
 
-print "cleaning up ... \n";
+print "cleaning up ... \n\n";
 `\\rm $texfile.*`;
 
+print "output written to:\n$outfile.pdf\n";
 
