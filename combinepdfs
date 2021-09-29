@@ -1,0 +1,6 @@
+#!/usr/bin/perl
+$usage = "combinepdfs $infile1 [$infile2 ...] $outfile\n";
+
+unless ($#ARGV < 0) {
+    `gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$ARGV[$#ARGV] @ARGV[0..$#ARGV-1] 1>&2`;
+}
