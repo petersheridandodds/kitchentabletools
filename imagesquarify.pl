@@ -30,7 +30,6 @@ foreach $imagefile (@imagefiles) {
         print "Did not comprehend $imagefile as an image file\n";
         exit;
     }
-    print "Creating $squareimagefile ...\n";
 
     $width = `identify -format "%w" $imagefile`;
     $height = `identify -format "%h" $imagefile`;
@@ -44,8 +43,11 @@ foreach $imagefile (@imagefiles) {
     }
     $borderdims = $xborder."x".$yborder;
 
+    print "Creating $squareimagefile ...\n";
     system("convert -bordercolor $bgcolor -border $borderdims $imagefile $squareimagefile");
+    print "Creating $x100imagefile ...\n";
     system("convert  -scale 100x100 $squareimagefile $x100imagefile");
+    print "Creating $x200imagefile ...\n";
     system("convert  -scale 200x200 $squareimagefile $x200imagefile");
 }
 
