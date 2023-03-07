@@ -3,7 +3,7 @@
 # https://github.com/petersheridandodds
 # MIT License
 
-$usage = "imagequarify.pl [--bordercolor=color] foo1.png [foo2.jpg foo3.tiff ...]
+$usage = "imagesquarify.pl [--bordercolor=color] foo1.png [foo2.jpg foo3.tiff ...]
 
 Uses ImageMagick's convert to add a border
 
