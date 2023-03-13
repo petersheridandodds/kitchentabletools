@@ -9,7 +9,7 @@ use File::Basename;
 $year = $year + 1900;
 $month = $month+1;
 
-$timesstampeddir = sprintf("$%04d-%02d-%02d-%02d-%02d-%02d",$year,$month,$day,$hour,$min,$sec);
+$timesstampeddir = sprintf("%04d-%02d-%02d-%02d-%02d-%02d",$year,$month,$day,$hour,$min,$sec);
 
 # note: could fine unique directories
 # but intended use is for small local archiving
